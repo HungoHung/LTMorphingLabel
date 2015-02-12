@@ -32,6 +32,8 @@
 		D74AD974195171E7009A2ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74AD973195171E7009A2ACD /* AppDelegate.swift */; };
 		D74AD976195171E7009A2ACD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D74AD975195171E7009A2ACD /* Images.xcassets */; };
 		D74AD98D195173B5009A2ACD /* LTMorphingLabelDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74AD98C195173B5009A2ACD /* LTMorphingLabelDemo.storyboard */; };
+		D75C26641A8CEEBC00B3B709 /* LTEmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75C26631A8CEEBC00B3B709 /* LTEmitterView.swift */; };
+		D75C26651A8CEED000B3B709 /* LTEmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75C26631A8CEEBC00B3B709 /* LTEmitterView.swift */; };
 		D7633A2B195812020009D084 /* LTDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7633A2A195812020009D084 /* LTDemoViewController.swift */; };
 		D7934DCB1A63AF1100AE04CE /* LTMorphingLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7934DCA1A63AF1100AE04CE /* LTMorphingLabelTests.swift */; };
 		D7934DD31A63B01600AE04CE /* NSString+LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7633A2C195965A00009D084 /* NSString+LTMorphingLabel.swift */; };
@@ -78,6 +80,7 @@
 		D7558D391962AB3000DCF592 /* LTMorphingLabel+Pixelate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Pixelate.swift"; sourceTree = "<group>"; };
 		D757C30C1974243400A34565 /* LTMorphingLabel+Burn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Burn.swift"; sourceTree = "<group>"; };
 		D757C31619742B1D00A34565 /* Fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fire.png; sourceTree = "<group>"; };
+		D75C26631A8CEEBC00B3B709 /* LTEmitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEmitterView.swift; sourceTree = "<group>"; };
 		D7633A2A195812020009D084 /* LTDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDemoViewController.swift; sourceTree = "<group>"; };
 		D7633A2C195965A00009D084 /* NSString+LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LTMorphingLabel.swift"; sourceTree = "<group>"; };
 		D7934DC61A63AF1100AE04CE /* LTMorphingLabelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LTMorphingLabelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				D7AFEC911962511C0006FA88 /* LTEasing.swift */,
+				D75C26631A8CEEBC00B3B709 /* LTEmitterView.swift */,
 				D7633A2C195965A00009D084 /* NSString+LTMorphingLabel.swift */,
 				D74AD98E19517430009A2ACD /* LTMorphingLabel.swift */,
 				D7AFEC93196256720006FA88 /* LTMorphingLabel+Evaporate.swift */,
@@ -381,6 +385,7 @@
 				D720D07C1A5E923100747465 /* LTMorphingLabel+Anvil.swift in Sources */,
 				D74AD974195171E7009A2ACD /* AppDelegate.swift in Sources */,
 				D7633A2B195812020009D084 /* LTDemoViewController.swift in Sources */,
+				D75C26651A8CEED000B3B709 /* LTEmitterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +407,7 @@
 				D720D06D1A5E91CB00747465 /* LTMorphingLabel.swift in Sources */,
 				D720D06E1A5E91CB00747465 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				D720D06F1A5E91CB00747465 /* LTMorphingLabel+Fall.swift in Sources */,
+				D75C26641A8CEEBC00B3B709 /* LTEmitterView.swift in Sources */,
 				D720D0701A5E91CB00747465 /* LTMorphingLabel+Pixelate.swift in Sources */,
 				D720D0711A5E91CB00747465 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				D720D0721A5E91CB00747465 /* LTMorphingLabel+Burn.swift in Sources */,

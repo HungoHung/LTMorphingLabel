@@ -120,15 +120,15 @@ typealias LTMorphingSkipFramesClosure = (Void) -> Int
     var _drawingClosures = Dictionary<String, LTMorphingDrawingClosure>()
     var _progressClosures = Dictionary<String, LTMorphingManipulateProgressClosure>()
     var _skipFramesClosures = Dictionary<String, LTMorphingSkipFramesClosure>()
-    var _diffResults = Array<LTCharacterDiffResult>()
+    var _diffResults = [LTCharacterDiffResult]()
     var _originText = ""
     var _currentFrame = 0
     var _totalFrames = 0
     var _totalDelayFrames = 0
     var _totalWidth: Float = 0.0
     let _characterOffsetYRatio = 1.1
-    var _originRects = Array<CGRect>()
-    var _newRects = Array<CGRect>()
+    var _originRects = [CGRect]()
+    var _newRects = [CGRect]()
     var _charHeight: CGFloat = 0.0
     var _skipFramesCount: Int = 0
         
@@ -243,8 +243,8 @@ extension LTMorphingLabel {
     
     // Could be enhanced by kerning text:
     // http://stackoverflow.com/questions/21443625/core-text-calculate-letter-frame-in-ios
-    func rectsOfEachCharacter(textToDraw:String, withFont font:UIFont) -> Array<CGRect> {
-        var charRects = Array<CGRect>()
+    func rectsOfEachCharacter(textToDraw:String, withFont font:UIFont) -> [CGRect] {
+        var charRects = [CGRect]()
         var leftOffset: CGFloat = 0.0
 
         if _charHeight == 0.0 {
@@ -271,7 +271,7 @@ extension LTMorphingLabel {
             ()
         }
         
-        var offsetedCharRects = Array<CGRect>()
+        var offsetedCharRects = [CGRect]()
         
         for r in charRects {
             offsetedCharRects.append(CGRectOffset(r, stringLeftOffSet, 0.0))
@@ -348,9 +348,9 @@ extension LTMorphingLabel {
             }
     }
     
-    func limboOfCharacters() -> Array<LTCharacterLimbo> {
+    func limboOfCharacters() -> [LTCharacterLimbo] {
         let fontSize = font.pointSize
-        var limbo = Array<LTCharacterLimbo>()
+        var limbo = [LTCharacterLimbo]()
         
         // Iterate original characters
         for (i, character) in enumerate(_originText) {
@@ -436,117 +436,4 @@ extension LTMorphingLabel {
             }
         }
     }
-}
-
-
-// MARK: - LTEmitterView
-
-struct LTEmitter {
-    
-    let layer: CAEmitterLayer = {
-        let _layer = CAEmitterLayer()
-        _layer.emitterPosition = CGPointMake(10, 10)
-        _layer.emitterSize = CGSizeMake(10, 1)
-        _layer.renderMode = kCAEmitterLayerOutline
-        _layer.emitterShape = kCAEmitterLayerLine
-        return _layer
-        }()
-    
-    let cell: CAEmitterCell = {
-        let image = UIImage(named:"Sparkle")!.CGImage
-        let _cell = CAEmitterCell()
-        _cell.name = "sparkle"
-        _cell.birthRate = 150.0
-        _cell.velocity = 50.0
-        _cell.velocityRange = -80.0
-        _cell.lifetime = 0.16
-        _cell.lifetimeRange = 0.1
-        _cell.emissionLongitude = CGFloat(M_PI_2 * 2.0)
-        _cell.emissionRange = CGFloat(M_PI_2 * 2.0)
-        _cell.contents = image
-        _cell.scale = 0.1
-        _cell.yAcceleration = 100
-        _cell.scaleSpeed = -0.06
-        _cell.scaleRange = 0.1
-        return _cell
-        }()
-    
-    var _duration: Float = 0.6
-    
-    init(name: String, duration: Float) {
-        cell.name = name
-        _duration = duration
-    }
-    
-    func play() {
-        if let cells = layer.emitterCells {
-            if cells.count > 0 {
-                return
-            }
-        }
-        
-        layer.emitterCells = [cell]
-        let d: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(_duration * Float(NSEC_PER_SEC)))
-        dispatch_after(d, dispatch_get_main_queue()) {
-            self.layer.birthRate = 0.0
-        }
-    }
-    
-    func stop() {
-        if (nil != layer.superlayer) {
-            layer.removeFromSuperlayer()
-        }
-    }
-    
-    func update(configureClosure: LTEmitterConfigureClosure? = Optional.None) -> LTEmitter {
-        if let closure = configureClosure {
-            configureClosure!(self.layer, self.cell)
-        }
-        return self
-    }
-    
-}
-
-
-typealias LTEmitterConfigureClosure = (CAEmitterLayer, CAEmitterCell) -> Void
-
-
-class LTEmitterView: UIView {
-    
-    lazy var emitters: Dictionary<String, LTEmitter> = {
-        var _emitters = Dictionary<String, LTEmitter>()
-        return _emitters
-        }()
-    
-    func createEmitter(name: String, duration: Float, configureClosure: LTEmitterConfigureClosure? = Optional.None) -> LTEmitter {
-        var emitter: LTEmitter
-        if let e = emitterByName(name) {
-            emitter = e
-        } else {
-            emitter = LTEmitter(name: name, duration: duration)
-            
-            if let closure = configureClosure {
-                configureClosure!(emitter.layer, emitter.cell)
-            }
-            
-            layer.addSublayer(emitter.layer)
-            emitters.updateValue(emitter, forKey: name)
-        }
-        return emitter
-    }
-    
-    func emitterByName(name: String) -> LTEmitter? {
-        if let e = emitters[name] {
-            return e
-        }
-        return Optional.None
-    }
-    
-    func removeAllEmit() {
-        for (name, emitter) in emitters {
-            emitter.layer.removeFromSuperlayer()
-        }
-        emitters.removeAll(keepCapacity: false)
-    }
-    
 }

@@ -86,13 +86,13 @@ struct LTCharacterDiffResult: DebugPrintable {
 }
 
 
-func >>(lhs: String, rhs: String) -> Array<LTCharacterDiffResult> {
+func >>(lhs: String, rhs: String) -> [LTCharacterDiffResult] {
     
-    var diffResults = Array<LTCharacterDiffResult>()
+    var diffResults = [LTCharacterDiffResult]()
     let newChars = enumerate(rhs)
     let lhsLength = count(lhs)
     let rhsLength = count(rhs)
-    var skipIndexes = Array<Int>()
+    var skipIndexes = [Int]()
     
     for i in 0..<(max(lhsLength, rhsLength) + 1) {
         var result = LTCharacterDiffResult(diffType: .Add, moveOffset: 0, skip: false)

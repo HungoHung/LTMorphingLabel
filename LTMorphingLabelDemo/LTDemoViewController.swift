@@ -14,7 +14,7 @@ class LTDemoViewController: UIViewController, LTMorphingLabelDelegate {
     var textArray = ["What is design?", "Design", "Design is not just", "what it looks like", "and feels like.", "Design", "is how it works.", "- Steve Jobs", "Older people", "sit down and ask,", "'What is it?'", "but the boy asks,", "'What can I do with it?'.", "- Steve Jobs", "", "Swift", "Objective-C", "iPhone", "iPad", "Mac Mini", "MacBook Pro", "Mac Pro", "老婆 & 女儿"]
     var text:String {
     get {
-        if i >= countElements(textArray) {
+        if i >= count(textArray) {
             i = 0
         }
         return textArray[i++]
@@ -39,7 +39,7 @@ class LTDemoViewController: UIViewController, LTMorphingLabelDelegate {
     }
     
     @IBAction func segmentChanged(sender: AnyObject) {
-        let seg = sender as UISegmentedControl
+        let seg = sender as! UISegmentedControl
         switch seg.selectedSegmentIndex {
         case 1:
             self.label.morphingEffect = .Evaporate

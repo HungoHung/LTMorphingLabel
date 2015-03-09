@@ -36,7 +36,7 @@ The ```.Scale``` effect is originally introduced by Apple in WWDC 2014. New morp
 - [ ] Text kerning
 - [ ] Text shadow
 - [ ] Multiline
-- [ ] Particles of `.Burn` is weired
+- [ ] Particles of `.Burn` is weird
 - [ ] Docs
 
 ## Installation
